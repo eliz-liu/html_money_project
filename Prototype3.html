@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>&#128184; How Much I Spend? &#128184;</title>
+<style>
+    h1 {
+text-align: center;
+color:cornflowerblue;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size:500%;
+    }
+
+        h2 {
+text-align: left;
+color:cornflowerblue;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size:300%;
+    } 
+
+    h3 {
+text-align: left;
+color:cornflowerblue;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size:250%;
+    }
+    h4 {
+        text-align: left;
+        color:black;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size:200%;
+    }
+    .btn-display {
+        text-align: center;
+        color: white;
+        background-color: cornflowerblue;
+        border-color: cornflowerblue;
+        font-size: 70%;
+        height: 30%;
+        width: 20%;
+        margin-left:40%
+    }
+
+.input-display{
+
+        color:darkblue;
+    font-weight:700;
+        background-color: ghostwhite;
+        border-color: black;
+        font-size: 80%;
+        width: 20%;
+        margin-left:10%
+}
+
+.input-display2{
+
+        color:darkblue;
+    font-weight:700;
+        background-color: ghostwhite;
+        border-color: black;
+        font-size: 80%;
+        width: 20%;
+}
+    p {
+        text-align: left;
+        color:black;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size:200%;
+    }
+
+    em {
+        color:black;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size:100%;
+    }
+
+    th,td{
+ text-align: center;
+        color:black;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size:100%;
+        padding-top: 0.5%;
+  padding-right: 0.5%;
+  padding-bottom: 0.5%;
+  padding-left: 0.5%;
+  border: 1px solid cornflowerblue;
+
+
+    }
+
+    .box {
+        background-color:floralwhite;
+
+        border: 5px solid cornflowerblue;
+  border-radius: 5px;
+
+  padding-top: 0.5%;
+  padding-right: 5%;
+  padding-left: 5%;
+        width: 80%;
+        margin: 5%;
+
+    }
+
+    th {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+
+    #file{
+        color:cornflowerblue;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size:150%;
+
+margin-left: 35%
+
+    }
+
+</style>
+</head>
+
+<body onload="aMessage;">
+
+
+    <form id="form1" runat="server">
+
+    <h1 id="title">
+        &#128184; How much do I spend? &#128184;</h1>
+<div>
+    <p>
+<progress id="file" value="1" max= "3">1/3</progress>
+</p>
+</div>
+    <div id="initial" class="box">
+        <h2>Create New Expenses</h2>
+        <h3>For each expense...</h3>
+        <h4>Enter expense name: <input id="exp_name" class="input-display" type="text" /></h4>
+        <h4>Select the expense date: <input id="exp_date" class="input-display" type="date" aria-label="This is a textbox. Enter date in here."/></h4>
+        <h4>Enter the expense amount: $<input id="exp_amount" class="input-display" type="number" aria-label="This is a textbox. Enter expense amount in here."/></h4>
+        <h4>Select the expense type or make your own expense type.
+<input type="text" class="input-display" aria-label="This is a dropdown menu. You can select the default expense types below, or type in the menu to a custom expense type." name="type" list="exp_type"/>
+    <datalist id="exp_type">
+  <option value="misc"/>
+  <option value="restaurants"/>
+  <option value="entertainment"/>
+  <option value="groceries"/>
+  <option value="clothes"/>
+  <option value="bills"/>
+    </datalist>
+</h4>
+        <h3>Then press the &#128519; button below to create your new expense.</h3>
+ <p>
+
+        <input id="SubmitExp" type="button" value="&#128519;" class="btn-display" aria-label= "This is a button. Click here to create your expense."/>
+            </p>        
+    <hr />
+<h2>Review Your Expenses</h2>
+<h3>The table below shows the expenses you created so far. </h3>
+<p>To edit the expense in the table, click on the row you want to edit, then change the data above. Press the enter button again. </p>
+<p>To delete a row, select a row and then the delete button.</p>
+        <h3> Press the &#128520; button below when you're done creating expenses.</h3>
+        
+<div>
+
+        <p>
+
+        <input id="Submit1" type="button" value="&#128520;" class="btn-display" aria-label="This is a button. Click here when you're done creating expenses." onclick= "ToolDisplay()"/> </p>        
+    
+
+</div>  
+               <div>
+
+        <h3>Press the &#128558; button below to clear the entire page.</h3>
+        <p>
+
+        <input id="Reset" type="button" value="&#128558;" class="btn-display"  aria-label= "This is a button. Click here to clear the entire page." onclick = "window.location.href=window.location.href"/>
+            </p>
+            </div>
+
+    </div>
+     
+    <div id="Tool" class="box">
+       <h2>Expense Search Tool</h2>
+        <h3>Find expenses from...</h3>
+
+
+    <p>
+     <input id="exp_date_initial" class="input-display2" type="date" aria-label=" This is a date selection box. Select the intial search date in the Calendar on the right, or type date in the month/day/year format."/> date intial to
+     <input id="exp_date_final" class="input-display2" type="date" aria-label=" This is a date selection box. Select the final search date in the Calendar on the right, or type date in the month/day/year format." /> date final for
+     <input type="text" class="input-display" aria-label="This is a dropdown menu. You can select the default expense types to search for below." name="type" list="exp_type"/> expense type
+
+ <datalist id="exp_search">
+<option value="all expenses"/>
+  <option value="misc"/>
+  <option value="restaurants"/>
+  <option value="entertainment"/>
+  <option value="groceries"/>
+  <option value="clothes"/>
+  <option value="bills"/>
+    </datalist>.
+    </p>
+
+
+<div>
+    <h3>Press the &#128124; button below when you're done customizing your expense search.</h3>
+        <p>
+
+        <input id="Submit2" type="button" value="&#128124;" class="btn-display" onclick= "TotalDisplay()"/>
+            </p>
+           <div>
+
+        <h3>Press the &#128558; button below to return to the start.</h3>
+        <p>
+
+        <input id="Reset2" type="button" value="&#128558;" class="btn-display"  aria-label= "This is a button. Click here to return to the start."onclick = "window.location.href=window.location.href"/>
+            </p>
+            </div>
+</div>
+    </div>
+
+    <div id="Total" class="box">
+        <h2>Total Spendings</h2>
+
+    <p>Your total spendings are $ <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+&nbsp;!</p> 
+        <p>See your expense search results below!</p>
+
+    <table id="searchTable" style="width:100%; height: 150px; margin-left: 20px;"> <!-- table will show search results -->
+        <tr>
+            <th>date</th>
+            <th>expense amount</th>
+            <th>description</th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+
+        <div>
+
+        <h3>Press the &#128075; button below to return to the start.</h3>
+        <p>
+
+        <input id="Reset3" type="button" value="&#128075;" class="btn-display"  aria-label= "This is a button. Click here to return to the start."onclick = "window.location.href=window.location.href"/>
+            </p>
+            </div>
+    </div>
+
+    <script> document.getElementById("Tool").style.visibility = "hidden";</script>
+        <script>document.getElementById("Total").style.visibility = "hidden";</script>
+    <script> function aMessage() {
+     alert("Hi there! Thanks for waiting!");
+     document.getElementById("file").value = 1;
+        }
+    </script>
+
+
+    <script> function ToolDisplay() {
+     document.getElementById("initial").style.display = "none";
+     document.getElementById("Tool").style.visibility = "visible";
+     document.getElementById("file").value += 1;
+        }
+    </script>
+
+    <script> function TotalDisplay() {
+     document.getElementById("Tool").style.display = "none";
+     document.getElementById("Total").style.visibility = "visible";
+     document.getElementById("file").value += 1;
+     }
+    </script>
+
+
+    </form>
+
+
+</body>
+</html>
