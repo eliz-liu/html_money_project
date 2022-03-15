@@ -1,2 +1,4 @@
 # html_money_project
-Calculates how much you spend. built using html, javascript, visual studio, json. Unfinished.
+A little tool that calculates how much you spend. <br>
+Built using html, javascript, visual studio, json. <br>
+Unfinished.
